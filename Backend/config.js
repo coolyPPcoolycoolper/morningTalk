@@ -6,7 +6,7 @@ module.exports = {
         host: 'p5db-local.exaler.co.th',
         user: 'crms',
         password: 'crms',
-        database: 'crms',
+        database: 'morning',
         port: 54325,
     },
 };
