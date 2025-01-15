@@ -1,0 +1,36 @@
+name: Docker Image CI
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Checkout code
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      # Log in to GitHub Container Registry
+      - name: Log in to GitHub Container Registry
+        uses: docker/login-action@v2
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      # Build and Push morning-api
+      - name: Build and Push morning-api
+        run: |
+          docker build ./Backend --file ./Backend/Dockerfile --tag ghcr.io/${{ github.repository }}/morning-api:dev
+          docker push ghcr.io/${{ github.repository }}/morning-api:dev
+
+      # Build and Push morning-web
+      - name: Build and Push morning-web
+        run: |
+          docker build ./React-app --file ./React-app/Dockerfile --tag ghcr.io/${{ github.repository }}/morning-web:dev
+          docker push ghcr.io/${{ github.repository }}/morning-web:dev

@@ -1,2 +1,4 @@
 docker-build-api.bat
 docker-build-web.bat
+docker-build-api-dev.bat
+docker-build-web-dev.bat
