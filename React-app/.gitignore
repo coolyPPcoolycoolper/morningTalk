@@ -25,3 +25,4 @@ package-lock.json
 /src/assets/sass/now-ui-dashboard.css
 docker-build-api.bat
 docker-build-web.bat
+runWeb.bat
