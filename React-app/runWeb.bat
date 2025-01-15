@@ -1,10 +1,10 @@
 @echo off
 :: ตั้งค่า variables
-set TAG=ghcr.io/coolyppcoolycoolper/morningtalk/morning-web:dev
+set TAG=ghcr.io/coolyppcoolycoolper/morningtalk/morning-web:local
 set CONTAINER_NAME=react-Web
 set LOCAL_PORT=3001
 set CONTAINER_PORT=3000
-
+echo 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 | docker login ghcr.io -u coolyPPcoolycoolper --password-stdin
 echo Pulling Docker image...
 docker pull %TAG%
 if %ERRORLEVEL% neq 0 (

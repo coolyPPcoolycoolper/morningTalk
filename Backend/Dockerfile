@@ -1,17 +1,18 @@
-# Use an official Node.js runtime as a parent image
 FROM node:16
 
-# Set the working directory inside the container
+# ตั้งค่า working directory
 WORKDIR /app
 
-# Copy package.json and package-lock.json (if applicable) and install dependencies
+# คัดลอกไฟล์ package.json และ package-lock.json (ถ้ามี)
 COPY package*.json ./
 
-# Copy the rest of your application code into the container
-COPY . .
+# คัดลอกไฟล์ทั้งหมดในโฟลเดอร์ Local ไปยัง container
+COPY ./Backend/package*.json ./
+COPY ./Backend/app.js ./
+COPY ./Backend ./
 
-# Expose the port your app will run on
+# เปิดพอร์ตสำหรับแอปพลิเคชัน
 EXPOSE 3000
 
-# Define the command to run your app
+# กำหนด entry point
 CMD ["node", "app.js"]
